@@ -11,13 +11,14 @@ import org.jetbrains.annotations.NotNull;
 
 @SuppressWarnings("deprecation")
 public class HudRenderer implements HudRenderCallback {
+    //ping阈值
     private static final int PING_WHITE = 150;
     private static final int PING_YELLOW = 300;
     private static final int PING_ORANGE = 1000;
-
-    private static final double SPR_RED = 2.0;
-    private static final double SPR_ORANGE = 5.0;
-    private static final double SPR_YELLOW = 15.0;
+    //SPR阈值
+    private static final double SPR_RED = 10.0;
+    private static final double SPR_ORANGE = 30.0;
+    private static final double SPR_YELLOW = 100.0;
 
     // 方块尺寸
     private static final int BAR_WIDTH = 2;
@@ -27,7 +28,7 @@ public class HudRenderer implements HudRenderCallback {
     private static final int BAR_SPACING = 0;
 
     // 方块Y轴偏移（正值向下移动，使方块相对于文字更靠下）
-    private static final int BAR_Y_OFFSET = 6;
+    private static final int BAR_Y_OFFSET = 7;
 
     @Override
     public void onHudRender(@NotNull DrawContext drawContext, RenderTickCounter tickCounter) {
@@ -43,7 +44,7 @@ public class HudRenderer implements HudRenderCallback {
         int sprColor = getSprColor(spr);
         int idColor = Colors.WHITE;
 
-        String pingText = String.format("Ping: %d ms", ping);
+        String pingText = String.format(" %d ms", ping);
         String sprText = String.format("SPR: %.1f pkt/s", spr);
         String idText = String.format("ID: %s", playerName);
 
